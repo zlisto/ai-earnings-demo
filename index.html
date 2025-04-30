@@ -5,13 +5,6 @@
   <title>AI Earnings Report Generator</title>
   <style>
     :root {
-      --bg-color: #f4f4f4;
-      --text-color: #333;
-      --box-bg: white;
-      --accent-color: #3498db;
-    }
-
-    body.dark {
       --bg-color: #1e1e1e;
       --text-color: #ddd;
       --box-bg: #2c2c2c;
@@ -30,6 +23,14 @@
 
     h1 {
       color: var(--accent-color);
+      margin-bottom: 10px;
+    }
+
+    .course-banner {
+      font-size: 1.4em;
+      font-weight: bold;
+      color: #f1c40f;
+      margin-bottom: 30px;
     }
 
     h2 {
@@ -42,7 +43,7 @@
     }
 
     code {
-      background: #55555522;
+      background: #444;
       padding: 2px 6px;
       border-radius: 4px;
       font-size: 0.95em;
@@ -53,13 +54,26 @@
       padding: 20px;
       margin-bottom: 20px;
       border-left: 5px solid var(--accent-color);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
 
     .dark-toggle {
-      float: right;
-      margin-top: -40px;
-      margin-bottom: 20px;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      transition: background 0.3s;
+    }
+
+    .dark-toggle:hover {
+      background: #2d80c5;
     }
 
     .tabs {
@@ -84,18 +98,18 @@
 
     .credit {
       font-size: 0.9em;
-      color: #888;
+      color: #aaa;
       margin-top: 40px;
     }
   </style>
 </head>
-<body>
+<body class="dark">
 
-  <button class="dark-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+  <button class="dark-toggle" onclick="toggleDarkMode()">Toggle Light/Dark Mode</button>
 
   <h1>AI Earnings Report Generator</h1>
   <p>Presented by Professor Tauhid Zaman</p>
-
+  <div class="course-banner">Professor Zaman teaches MGT 575: Generative AI and Social Media (Spring 2026)</div>
   <div class="tabs">
     <a class="tab" href="#workflow">Workflow</a>
     <a class="tab" href="#downloads">Download Files</a>
@@ -162,11 +176,13 @@
     <h2>Completed Reports</h2>
     <ul>
       <li><a href="report_tesla.html" target="_blank">Tesla Q4 Report</a></li>
-      <!-- Add more reports as needed -->
+      <li><a href="report_netflix.html" target="_blank">Netflix Q4 Report</a></li>
+      <li><a href="report_luckin-coffee.html" target="_blank">Luckin Coffee Q4 Report</a></li>
+      <!-- You can add more reports here -->
     </ul>
   </div>
 
-  <p class="credit">AI + HTML Automation | Yale School of Management</p>
+  <p class="credit">Built by Professor Tauhid Zaman | Yale School of Management</p>
 
   <script>
     function toggleDarkMode() {
