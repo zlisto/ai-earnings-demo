@@ -2,101 +2,177 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>AI-Powered Earnings Report HTML Generator</title>
+  <title>AI Earnings Report Generator</title>
   <style>
+    :root {
+      --bg-color: #f4f4f4;
+      --text-color: #333;
+      --box-bg: white;
+      --accent-color: #3498db;
+    }
+
+    body.dark {
+      --bg-color: #1e1e1e;
+      --text-color: #ddd;
+      --box-bg: #2c2c2c;
+      --accent-color: #4aa3ff;
+    }
+
     body {
       font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      color: #333;
+      background: var(--bg-color);
+      color: var(--text-color);
       padding: 40px;
       max-width: 900px;
       margin: auto;
+      transition: background 0.3s, color 0.3s;
     }
+
     h1 {
-      color: #2c3e50;
+      color: var(--accent-color);
     }
+
     h2 {
-      color: #2980b9;
+      color: var(--accent-color);
       margin-top: 30px;
     }
+
     ul {
       line-height: 1.6;
     }
+
     code {
-      background: #eaeaea;
+      background: #55555522;
       padding: 2px 6px;
       border-radius: 4px;
       font-size: 0.95em;
     }
+
     .step-box {
-      background: white;
+      background: var(--box-bg);
       padding: 20px;
       margin-bottom: 20px;
-      border-left: 5px solid #3498db;
+      border-left: 5px solid var(--accent-color);
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .dark-toggle {
+      float: right;
+      margin-top: -40px;
+      margin-bottom: 20px;
+    }
+
+    .tabs {
+      margin-top: 40px;
+    }
+
+    .tab {
+      display: inline-block;
+      margin-right: 15px;
+      padding: 10px;
+      background: var(--box-bg);
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: bold;
+    }
+
+    .tab:hover {
+      background: var(--accent-color);
+      color: white;
+    }
+
+    .credit {
+      font-size: 0.9em;
+      color: #888;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
-  <h1>Using AI to Turn Earnings PDFs into Interactive Web Reports</h1>
-  <p>This is the live workflow for converting quarterly earnings reports into slick, interactive HTML reports using AI.</p>
 
-  <div class="step-box">
-    <h2>Step 1: Upload PDF to AI</h2>
+  <button class="dark-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+  <h1>AI Earnings Report Generator</h1>
+  <p>Presented by Professor Tauhid Zaman</p>
+
+  <div class="tabs">
+    <a class="tab" href="#workflow">Workflow</a>
+    <a class="tab" href="#downloads">Download Files</a>
+    <a class="tab" href="#completed">Completed Reports</a>
+  </div>
+
+  <div id="workflow">
+    <div class="step-box">
+      <h2>Step 1: Upload PDF to AI</h2>
+      <ul>
+        <li>Ask AI to read the PDF and create an <code>HTML</code> version with tabbed sections.</li>
+        <li>Each tab maps to a logical section like "Summary", "Income Statement", etc.</li>
+      </ul>
+    </div>
+
+    <div class="step-box">
+      <h2>Step 2: Iterate on Design</h2>
+      <ul>
+        <li>Use AI to refine formatting, layout, and style.</li>
+        <li>Add visuals with Chart.js or Plotly.js.</li>
+      </ul>
+    </div>
+
+    <div class="step-box">
+      <h2>Step 3: Extract Structured Data</h2>
+      <ul>
+        <li>Ask AI to generate a <code>JSON</code> file with key metrics like revenue, EPS, margins.</li>
+      </ul>
+    </div>
+
+    <div class="step-box">
+      <h2>Step 4: Create Templates</h2>
+      <ul>
+        <li>Make an HTML template with variables like <code>{{revenue}}</code>, <code>{{eps}}</code>.</li>
+        <li>Pair it with the AI-generated JSON format.</li>
+      </ul>
+    </div>
+
+    <div class="step-box">
+      <h2>Step 5: Build AI Project</h2>
+      <ul>
+        <li>Store the templates and connect the AI to ingest new PDFs.</li>
+        <li>Generate consistent, reusable HTML reports automatically.</li>
+      </ul>
+    </div>
+
+    <h2>Goal</h2>
     <ul>
-      <li>Ask AI to read the PDF and create an <code>HTML</code> version with tabbed sections for each page or topic.</li>
-      <li>Each tab should correspond to a logical section like "Summary", "Income Statement", "Outlook", etc.</li>
+      <li>Automate tedious formatting with AI</li>
+      <li>Separate data and presentation</li>
+      <li>Build scalable tools for finance & consulting workflows</li>
     </ul>
   </div>
 
-  <div class="step-box">
-    <h2>Step 2: Iterate on Design</h2>
+  <div id="downloads">
+    <h2>Download Files</h2>
     <ul>
-      <li>Use AI to clean up formatting, styling, and layout until you're satisfied.</li>
-      <li>Add charts or icons if desired using Chart.js or Plotly.js.</li>
+      <li><a href="output.json" download>Download output.json (sample data)</a></li>
+      <li><a href="report_template.html" download>Download report_template.html (HTML template)</a></li>
     </ul>
   </div>
 
-  <div class="step-box">
-    <h2>Step 3: Extract Structured Data</h2>
+  <div id="completed">
+    <h2>Completed Reports</h2>
     <ul>
-      <li>Ask AI to create a <code>JSON</code> version of the key data (e.g., revenue, EPS, margins).</li>
-      <li>This data will later feed into templates for future automation.</li>
+      <li><a href="report_tesla.html" target="_blank">Tesla Q4 Report</a></li>
+      <!-- Add more reports as needed -->
     </ul>
   </div>
 
-  <div class="step-box">
-    <h2>Step 4: Create HTML + JSON Template Pair</h2>
-    <ul>
-      <li>Use AI to write an HTML template with variables like <code>{{revenue}}</code> or <code>{{eps}}</code>.</li>
-      <li>Pair it with the JSON data format the AI generated.</li>
-    </ul>
-  </div>
+  <p class="credit">AI + HTML Automation | Yale School of Management</p>
 
-  <div class="step-box">
-    <h2>Step 5: Build a Reusable AI Project</h2>
-    <ul>
-      <li>Store the HTML and JSON templates as source files in your AI assistant or coding environment.</li>
-      <li>Feed it new PDFs to generate new HTML reports automatically.</li>
-      <li>Each report becomes a new version of the website with consistent structure and branding.</li>
-    </ul>
-  </div>
-
-  <h2>Goal</h2>
-  <p>Students will leave knowing how to:</p>
-  <ul>
-    <li>Use AI to automate repetitive formatting tasks.</li>
-    <li>Extract and reuse data across templates.</li>
-    <li>Think modularly about content creation with JSON + HTML pipelines.</li>
-  </ul>
-  
-  <h2>Download Files</h2>
-  <ul>
-    <li><a href="output_template.json" download>Download output.json (sample data)</a></li>
-    <li><a href="report_template.html" download>Download report_template.html (HTML template)</a></li>
-  </ul>
-</body>
-</html>
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark');
+    }
+  </script>
 
 </body>
 </html>
