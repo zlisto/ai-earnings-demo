@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luckin Coffee Q4 2024 Earnings Presentation</title>
+    <style>
+        :root {
+            --primary-pink: #ff69b4;
+            --primary-green: #32cd32;
+            --light-pink: #ffe6f2;
+            --light-green: #eaffea;
+            --dark-text: #333;
+            --light-text: #fff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-text);
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-pink) 0%, #ff86c4 100%);
+            color: var(--light-text);
+            text-align: center;
+            padding: 40px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        header h1 {
+            margin: 10px 0;
+            font-weight: 600;
+            font-size: 2.5rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        
+        /* Tab Navigation */
+        .tabs {
+            background: linear-gradient(90deg, var(--primary-green) 0%, #4ddd4d 100%);
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+        
+        .tab-button {
+            background: none;
+            border: none;
+            color: var(--light-text);
+            padding: 15px 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            outline: none;
+            position: relative;
+            opacity: 0.8;
+        }
+        
+        .tab-button:hover {
+            opacity: 1;
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .tab-button.active {
+            opacity: 1;
+            box-shadow: inset 0 -4px 0 var(--primary-pink);
+        }
+        
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            padding: 40px 20px;
+            margin: 20px 0;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h2 {
+            color: var(--primary-pink);
+            border-bottom: 3px solid var(--primary-green);
+            padding-bottom: 10px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        
+        .infobox {
+            border: 2px solid var(--primary-pink);
+            border-radius: 8px;
+            padding: 25px;
+            margin: 25px 0;
+            background-color: var(--light-pink);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease;
+        }
+        
+        .infobox:hover {
+            transform: translateY(-5px);
+        }
+        
+        .infobox strong {
+            color: var(--primary-pink);
+            font-size: 1.1rem;
+        }
+        
+        /* Chart Styles */
+        .chart-container {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+        
+        .chart-title {
+            text-align: center;
+            color: var(--primary-pink);
+            margin-bottom: 20px;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        
+        /* Bar Chart */
+        .bar-chart-container {
+            height: 300px;
+            position: relative;
+            padding: 0 0 30px 50px;
+            margin-top: 20px;
+        }
+        
+        .bar-chart {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            height: 100%;
+            width: 100%;
+            position: relative;
+            border-left: 2px solid #ccc;
+            border-bottom: 2px solid #ccc;
+        }
+        
+        .bar-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            position: relative;
+            flex: 1;
+            max-width: 80px;
+            margin: 0 10px;
+        }
+        
+        .bar {
+            width: 60px;
+            background: linear-gradient(to top, var(--primary-green), var(--light-green));
+            border-radius: 5px 5px 0 0;
+            position: absolute;
+            bottom: 0;
+        }
+        
+        .bar-pink {
+            background: linear-gradient(to top, var(--primary-pink), var(--light-pink));
+        }
+        
+        .bar-label {
+            position: absolute;
+            bottom: -30px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--dark-text);
+            width: 100%;
+        }
+        
+        .bar-value {
+            position: absolute;
+            top: -25px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: var(--dark-text);
+        }
+        
+        .y-axis {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .y-axis-label {
+            font-size: 0.8rem;
+            color: var(--dark-text);
+            text-align: right;
+            padding-right: 10px;
+            transform: translateY(-50%);
+        }
+        
+        /* Line Chart */
+        .line-chart-container {
+            height: 300px;
+            position: relative;
+            padding: 0 0 30px 50px;
+            margin-top: 20px;
+        }
+        
+        .line-chart {
+            height: 100%;
+            width: 100%;
+            position: relative;
+            border-left: 2px solid #ccc;
+            border-bottom: 2px solid #ccc;
+        }
+        
+        .line-point {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--primary-pink);
+            transform: translate(-50%, 50%);
+            z-index: 2;
+        }
+        
+        .line-segment {
+            position: absolute;
+            height: 3px;
+            background-color: var(--primary-pink);
+            transform-origin: left center;
+            z-index: 1;
+        }
+        
+        .x-axis {
+            position: absolute;
+            bottom: -30px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .x-axis-label {
+            font-size: 0.8rem;
+            color: var(--dark-text);
+            text-align: center;
+        }
+        
+        /* Pie Chart */
+        .pie-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+        
+        .pie-chart {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--primary-pink) 0deg 198deg,
+                var(--primary-green) 198deg 288deg,
+                #ffcc00 288deg 360deg
+            );
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .pie-center {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .pie-center-text {
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--primary-pink);
+            text-align: center;
+        }
+        
+        .pie-legend {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            border-radius: 4px;
+        }
+        
+        /* ESG Chart */
+        .esg-chart {
+            display: flex;
+            justify-content: space-around;
+            height: 300px;
+            margin-top: 20px;
+            position: relative;
+            padding-bottom: 30px;
+        }
+        
+        .esg-bar-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100px;
+            position: relative;
+        }
+        
+        .esg-bar {
+            width: 80px;
+            position: absolute;
+            bottom: 0;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .esg-bar-label {
+            position: absolute;
+            bottom: -30px;
+            text-align: center;
+            font-size: 1rem;
+            color: var(--dark-text);
+            font-weight: 500;
+        }
+        
+        .esg-bar-value {
+            position: absolute;
+            top: -25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: white;
+            background-color: var(--dark-text);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        td, th {
+            border: 1px solid #eee;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: var(--primary-green);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: var(--light-green);
+        }
+        
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--primary-green) 0%, #4ddd4d 100%);
+            color: var(--light-text);
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+        
+        footer p {
+            margin: 10px 0;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .tabs {
+                flex-wrap: wrap;
+            }
+            
+            .tab-button {
+                flex: 1 0 50%;
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .bar-chart, .line-chart, .esg-chart {
+                overflow-x: auto;
+            }
+            
+            .esg-bar-container {
+                width: 80px;
+            }
+            
+            .esg-bar {
+                width: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Luckin Coffee Q4 2024 Earnings Presentation</h1>
+            <p>2025-02-20</p>
+        </div>
+    </header>
+    
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab('business-tab')">Business Update</button>
+        <button class="tab-button" onclick="openTab('financial-tab')">Financial Highlights</button>
+        <button class="tab-button" onclick="openTab('store-tab')">Store Growth</button>
+        <button class="tab-button" onclick="openTab('esg-tab')">ESG</button>
+    </div>
+    
+    <div class="container">
+        <div id="business-tab" class="tab-content active">
+            <h2>Business Update</h2>
+            <p>Formed a strategic partnership with Hextar Industries Berhad to expand into the Malaysian market.</p>
+            
+            <div class="chart-container">
+                <div class="chart-title">International Expansion Strategy - 2025</div>
+                <div class="pie-container">
+                    <div class="pie-chart">
+                        <div class="pie-center">
+                            <div class="pie-center-text">Market<br>Focus</div>
+                        </div>
+                    </div>
+                    <div class="pie-legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: var(--primary-pink);"></div>
+                            <span>China (98.63%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: var(--primary-green);"></div>
+                            <span>Southeast Asia (1.37%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #ffcc00;"></div>
+                            <span>Other Markets (0%)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="financial-tab" class="tab-content">
+            <h2>Financial Highlights</h2>
+            <div class="infobox">
+                <strong>Total Net Revenues:</strong> RMB34474.8 million (US$4723.9 million), <strong>38.4% Y/Y increase</strong>
+            </div>
+            <div class="infobox">
+                <strong>GAAP Operating Margin:</strong> 10.3%, <strong>expanded year-over-year</strong>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-title">Quarterly Revenue (RMB Millions)</div>
+                <div class="bar-chart-container">
+                    <div class="y-axis">
+                        <div class="y-axis-label">10,000</div>
+                        <div class="y-axis-label">7,500</div>
+                        <div class="y-axis-label">5,000</div>
+                        <div class="y-axis-label">2,500</div>
+                        <div class="y-axis-label">0</div>
+                    </div>
+                    <div class="bar-chart">
+                        <div class="bar-wrapper">
+                            <div class="bar" style="height: 45%;">
+                                <div class="bar-value">8181.3</div>
+                            </div>
+                            <div class="bar-label">Q1 2024</div>
+                        </div>
+                        <div class="bar-wrapper">
+                            <div class="bar" style="height: 60%;">
+                                <div class="bar-value">8450.2</div>
+                            </div>
+                            <div class="bar-label">Q2 2024</div>
+                        </div>
+                        <div class="bar-wrapper">
+                            <div class="bar" style="height: 75%;">
+                                <div class="bar-value">9230.0</div>
+                            </div>
+                            <div class="bar-label">Q3 2024</div>
+                        </div>
+                        <div class="bar-wrapper">
+                            <div class="bar" style="height: 90%;">
+                                <div class="bar-value">9613.3</div>
+                            </div>
+                            <div class="bar-label">Q4 2024</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-title">Operating Margin Trend (%)</div>
+                <div class="line-chart-container">
+                    <div class="y-axis">
+                        <div class="y-axis-label">12%</div>
+                        <div class="y-axis-label">9%</div>
+                        <div class="y-axis-label">6%</div>
+                        <div class="y-axis-label">3%</div>
+                        <div class="y-axis-label">0%</div>
+                    </div>
+                    <div class="line-chart">
+                        <!-- Points -->
+                        <div class="line-point" style="left: 12.5%; bottom: 88.33%;">
+                            <div class="bar-value">10.6%</div>
+                        </div>
+                        <div class="line-point" style="left: 37.5%; bottom: 87.5%;">
+                            <div class="bar-value">10.5%</div>
+                        </div>
+                        <div class="line-point" style="left: 62.5%; bottom: 84.17%;">
+                            <div class="bar-value">10.1%</div>
+                        </div>
+                        <div class="line-point" style="left: 87.5%; bottom: 86.67%;">
+                            <div class="bar-value">10.4%</div>
+                        </div>
+                        
+                        <!-- Lines -->
+                        <div class="line-segment" style="left: 12.5%; bottom: 88.33%; width: 25%; transform: rotate(-0.19deg);"></div>
+                        <div class="line-segment" style="left: 37.5%; bottom: 87.5%; width: 25%; transform: rotate(-0.76deg);"></div>
+                        <div class="line-segment" style="left: 62.5%; bottom: 84.17%; width: 25%; transform: rotate(0.57deg);"></div>
+                    </div>
+                    
+                    <div class="x-axis">
+                        <div class="x-axis-label">Q1 2024</div>
+                        <div class="x-axis-label">Q2 2024</div>
+                        <div class="x-axis-label">Q3 2024</div>
+                        <div class="x-axis-label">Q4 2024</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="store-tab" class="tab-content">
+            <h2>Store Growth</h2>
+            <p>Net new store openings of 6092 in 2024, ending the year with a total of 22340 stores.</p>
+            
+            <div class="chart-container">
+                <div class="chart-title">Annual Store Count</div>
+                <div class="bar-chart-container">
+                    <div class="y-axis">
+                        <div class="y-axis-label">25,000</div>
+                        <div class="y-axis-label">20,000</div>
+                        <div class="y-axis-label">15,000</div>
+                        <div class="y-axis-label">10,000</div>
+                        <div class="y-axis-label">5,000</div>
+                    </div>
+                    <div class="bar-chart">
+                        <div class="bar-wrapper">
+                            <div class="bar bar-pink" style="height: 27%;">
+                                <div class="bar-value">6020</div>
+                            </div>
+                            <div class="bar-label">2021</div>
+                        </div>
+                        <div class="bar-wrapper">
+                            <div class="bar bar-pink" style="height: 38%;">
+                                <div class="bar-value">8467</div>
+                            </div>
+                            <div class="bar-label">2022</div>
+                        </div>
+                        <div class="bar-wrapper">
+                            <div class="bar bar-pink" style="height: 73%;">
+                                <div class="bar-value">16248</div>
+                            </div>
+                            <div class="bar-label">2023</div>
+                        </div>
+                        <div class="bar-wrapper">
+                            <div class="bar bar-pink" style="height: 95%;">
+                                <div class="bar-value">22340</div>
+                            </div>
+                            <div class="bar-label">2024</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <table>
+                <tr>
+                    <th>Year</th>
+                    <th>Starting Store Count</th>
+                    <th>Net New Stores</th>
+                    <th>Ending Store Count</th>
+                    <th>Growth Rate</th>
+                </tr>
+                <tr>
+                    <td>2021</td>
+                    <td>3898</td>
+                    <td>2122</td>
+                    <td>6020</td>
+                    <td>54.5%</td>
+                </tr>
+                <tr>
+                    <td>2022</td>
+                    <td>6020</td>
+                    <td>2447</td>
+                    <td>8467</td>
+                    <td>40.6%</td>
+                </tr>
+                <tr>
+                    <td>2023</td>
+                    <td>10456</td>
+                    <td>5792</td>
+                    <td>16248</td>
+                    <td>55.3%</td>
+                </tr>
+                <tr>
+                    <td>2024</td>
+                    <td>16248</td>
+                    <td>6092</td>
+                    <td>22340</td>
+                    <td>37.5%</td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="esg-tab" class="tab-content">
+            <h2>ESG</h2>
+            <p>Expansion efforts include ESG considerations in new markets, with a focus on sustainable coffee sourcing.</p>
+            
+            <div class="chart-container">
+                <div class="chart-title">ESG Investment Allocation</div>
+                <div class="esg-chart">
+                    <div class="esg-bar-container">
+                        <div class="esg-bar" style="height: 45%; background: linear-gradient(to top, #5cb85c, #d0f0d0);">
+                            <div class="esg-bar-value">45%</div>
+                        </div>
+                        <div class="esg-bar-label">Environmental</div>
+                    </div>
+                    <div class="esg-bar-container">
+                        <div class="esg-bar" style="height: 35%; background: linear-gradient(to top, var(--primary-pink), var(--light-pink));">
+                            <div class="esg-bar-value">35%</div>
+                        </div>
+                        <div class="esg-bar-label">Social</div>
+                    </div>
+                    <div class="esg-bar-container">
+                        <div class="esg-bar" style="height: 20%; background: linear-gradient(to top, #f0ad4e, #fcf8e3);">
+                            <div class="esg-bar-value">20%</div>
+                        </div>
+                        <div class="esg-bar-label">Governance</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; Luckin Coffee 2025. All Rights Reserved.</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>Investor Relations:</span>
+                    <a href="mailto:ir@lkcoffee.com" style="color: white;">ir@lkcoffee.com</a>
+                </div>
+                <div class="contact-item">
+                    <span>Media Relations:</span>
+                    <a href="mailto:pr@lkcoffee.com" style="color: white;">pr@lkcoffee.com</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function openTab(tabId) {
+            // Hide all tab content
+            const tabContents = document.getElementsByClassName('tab-content');
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+            
+            // Remove active class from all tab buttons
+            const tabButtons = document.getElementsByClassName('tab-button');
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove('active');
+            }
+            
+            // Show the selected tab content
+            document.getElementById(tabId).classList.add('active');
+            
+            // Add active class to the clicked button
+            const currentTabIndex = ['business-tab', 'financial-tab', 'store-tab', 'esg-tab'].indexOf(tabId);
+            tabButtons[currentTabIndex].classList.add('active');
+        }
+    </script>
+</body>
+</html>
